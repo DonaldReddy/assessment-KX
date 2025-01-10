@@ -4,6 +4,8 @@ import { CoinPrice } from "../models/CoinPrice.schema";
 export async function fetchCryptoPrices() {
 	try {
 		console.log("fetching crypto prices");
+		const coins = ["bitcoin", "matic-network", "ethereum"];
+		// fetching crypto prices from CoinGecko API
 		const response = await axios.get(
 			"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cmatic-network%2Cethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true",
 			{
@@ -14,8 +16,8 @@ export async function fetchCryptoPrices() {
 			},
 		);
 		const data = response.data;
-		const coins = ["bitcoin", "matic-network", "ethereum"];
 
+		// saving the fetched data to the database
 		let promises = coins.map(async (coin) => {
 			const coinData: {
 				usd: number;

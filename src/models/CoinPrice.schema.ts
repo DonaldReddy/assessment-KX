@@ -22,7 +22,7 @@ const CoinPriceSchema = new Schema(
 	{ timestamps: true },
 );
 
-// collection middleware to calculate the mean, variance, and deviation
+// collection middleware to calculate the mean and deviation
 CoinPriceSchema.pre("save", function (next) {
 	const coin = this;
 

@@ -18,11 +18,16 @@ app.get("/", (req, res) => {
 app.use("/api", statRouter);
 
 async function startServer() {
-	await dbConnect();
-	app.listen(PORT, () => {
-		console.log(`Server is running on port ${PORT}`);
-	});
-	scheduleCronJobs();
+	try {
+		await dbConnect();
+		app.listen(PORT, () => {
+			console.log(`Server is running on port ${PORT}`);
+		});
+		scheduleCronJobs();
+	} catch (error) {
+		console.error("Error starting server:", error);
+		process.exit(1);
+	}
 }
 
 startServer();

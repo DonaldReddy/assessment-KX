@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { getCoinDeviation, getCoinStats } from "../repository/CoinPrice.repo";
 
+// Get the stats of a coin
 export async function getStats(
 	req: Request<{}, {}, {}, { coin: string }, {}>,
 	res: Response,
@@ -19,6 +20,7 @@ export async function getStats(
 	}
 }
 
+// Get the deviation of a coin
 export async function getDeviation(
 	req: Request<{}, {}, {}, { coin: string }, {}>,
 	res: Response,
