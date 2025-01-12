@@ -55,7 +55,7 @@ returns the stats of the coin.
 ```
 
 ```bash
-POST :-  "/api/deviation?coin=bitcoin"
+GET :-  "/api/deviation?coin=bitcoin"
 Query Param:- coin="name"
 
 returns the deviation of the past 100 record of the coin price.
